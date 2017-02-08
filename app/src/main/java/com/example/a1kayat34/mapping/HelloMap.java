@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import android.content.Intent;
 
 
-public class HelloMap extends Activity {
+public class HelloMap extends Activity implements View.OnClickListener {
 
     MapView mv;
 
@@ -29,7 +29,7 @@ public class HelloMap extends Activity {
         setContentView(R.layout.activity_main);
 
         // this line tells OpenStreetMap about our app.
-        // If you miss this out, you might get banned from OSM servers
+        // If you miss this out, you might get banned from OSM servers.
         Configuration.getInstance().load
                 (this, PreferenceManager.getDefaultSharedPreferences(this));
 
@@ -39,10 +39,10 @@ public class HelloMap extends Activity {
         mv.getController().setZoom(14);
         mv.getController().setCenter(new GeoPoint(40.1,22.5));
 
-        //Button go = (Button) findViewById(R.id.go);
-       //go.setOnClickListener(this);
+        Button go = (Button) findViewById(R.id.go);
+        go.setOnClickListener(this);
     }
-   /* //@Override
+   @Override
     public void onClick(View view){
         EditText latitude = (EditText) findViewById(R.id.latitude);
         EditText longitude = (EditText) findViewById(R.id.longitude);
@@ -51,7 +51,7 @@ public class HelloMap extends Activity {
         double lon = Double.parseDouble(longitude.getText().toString());
 
         mv.getController().setCenter(new GeoPoint(lat,lon));
-    }*/
+    }
 
     public boolean onCreateOptionsMenu(Menu menu)
     {
