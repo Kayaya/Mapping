@@ -30,8 +30,6 @@ public class HelloMap extends Activity {
 
         // this line tells OpenStreetMap about our app.
         // If you miss this out, you might get banned from OSM servers
-
-        // blah
         Configuration.getInstance().load
                 (this, PreferenceManager.getDefaultSharedPreferences(this));
 
