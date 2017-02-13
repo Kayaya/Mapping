@@ -81,7 +81,7 @@ public class HelloMap extends Activity implements View.OnClickListener {
         return false;
     }
 
-    public void onActivityResult(int requestCode,int resultCode,Intent intent){
+    protected void onActivityResult(int requestCode,int resultCode,Intent intent){
         if(requestCode==0)
         {
 
@@ -98,6 +98,16 @@ public class HelloMap extends Activity implements View.OnClickListener {
                     mv.setTileSource(TileSourceFactory.MAPNIK);
                 }
             }
+        }
+        if(requestCode==1){
+            if(resultCode==RESULT_OK){
+                Bundle extras = intent.getExtras();
+                Double latitude = extras.getDouble("com.example.latitude");
+                Double longitude = extras.getDouble("com.example.longitude");
+
+                mv.getController().setCenter(new GeoPoint(latitude,longitude));
+            }
+
         }
     }
 
