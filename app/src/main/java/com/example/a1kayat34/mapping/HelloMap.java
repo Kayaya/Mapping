@@ -72,6 +72,12 @@ public class HelloMap extends Activity implements View.OnClickListener {
             startActivityForResult(intent, 0);
             return true;
         }
+        else if(item.getItemId() == R.id.setlocation){
+            Intent intent = new Intent(this,SetLocationActivity.class);
+            startActivityForResult(intent, 1);
+            return true;
+
+        }
         return false;
     }
 

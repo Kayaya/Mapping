@@ -4,4 +4,6 @@
     <string name="regularview">Regular</string>
     <string name="cyclemapview">Cycle Map</string>
 
+    <string name="setlocation">Set location</string>
+
 </resources>
