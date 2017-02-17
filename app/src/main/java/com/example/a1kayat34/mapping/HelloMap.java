@@ -78,6 +78,12 @@ public class HelloMap extends Activity implements View.OnClickListener {
             return true;
 
         }
+        else if(item.getItemId() == R.id.poiList){
+            Intent intent = new Intent(this,PoiListActivity.class);
+            startActivityForResult(intent, 2);
+            return true;
+
+        }
         return false;
     }
 
