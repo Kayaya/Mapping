@@ -8,4 +8,6 @@
 
     <string name="poilist">POI List</string>
 
+    <string name="choosemapstyle">Choose Map Style</string>
+
 </resources>

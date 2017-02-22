@@ -24,11 +24,12 @@
         </activity>
         <activity
             android:name=".MapChooseActivity"
-            android:label="@string/choosemap"></activity>
+            android:label="@string/choosemap" />
         <activity
             android:name=".SetLocationActivity"
-            android:label="@string/setlocation"></activity>
-        <activity android:name=".PoiListActivity"></activity>
+            android:label="@string/setlocation" />
+        <activity android:name=".PoiListActivity" />
+        <activity android:name=".MapListActivity"></activity>
     </application>
 
 </manifest>

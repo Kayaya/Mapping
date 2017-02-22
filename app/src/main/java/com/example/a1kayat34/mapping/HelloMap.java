@@ -69,7 +69,7 @@ public class HelloMap extends Activity implements View.OnClickListener {
             // react to the menu item being selected...
             //System.exit(0);
             Intent intent = new Intent(this,MapChooseActivity.class);
-            startActivityForResult(intent, 0);
+            startActivityForResult(intent, 3);
             return true;
         }
         else if(item.getItemId() == R.id.setlocation){
@@ -84,11 +84,18 @@ public class HelloMap extends Activity implements View.OnClickListener {
             return true;
 
         }
+        else if(item.getItemId() == R.id.choosemapstyle){
+            Intent intent = new Intent(this,MapListActivity.class);
+            startActivityForResult(intent, 0);
+            return true;
+
+        }
+
         return false;
     }
 
     protected void onActivityResult(int requestCode,int resultCode,Intent intent){
-        if(requestCode==0)
+        if(requestCode==3)
         {
 
             if (resultCode==RESULT_OK)
@@ -113,6 +120,10 @@ public class HelloMap extends Activity implements View.OnClickListener {
 
                 mv.getController().setCenter(new GeoPoint(latitude,longitude));
             }
+
+        }
+        /* list exercise*/
+        if(requestCode==0){
 
         }
     }
