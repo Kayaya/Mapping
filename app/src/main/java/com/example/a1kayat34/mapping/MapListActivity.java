@@ -30,13 +30,27 @@ public class MapListActivity extends ListActivity {
     }
     public void onListItemClick(ListView lv, View view, int index, long id)
     {
+        /*Boolean cyclemap = false;
+        if(index == 1){
+            cyclemap = true;
+        }
+        Intent intent = new Intent();
+        Bundle bundle=new Bundle();
+
+        bundle.putDouble("com.example.cyclemap",cyclemap);
+        //
+        intent.putExtras(bundle);
+
+        setResult(RESULT_OK, intent);
+        finish();*/
         // handle list item selection
+        //still work to do here...
 
 
     }
     //cutomised adaptar
     public class MyAdaptar extends ArrayAdapter<String>{
-        public MyAdaptar(){
+            public MyAdaptar(){
             super(MapListActivity.this, android.R.layout.simple_list_item_1, names);
         }
         //decide how to display the layout

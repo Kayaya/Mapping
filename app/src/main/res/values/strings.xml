@@ -9,5 +9,7 @@
     <string name="poilist">POI List</string>
 
     <string name="choosemapstyle">Choose Map Style</string>
+    <!-- Preferences -->
+    <string name="preferences">Preferences</string>
 
 </resources>

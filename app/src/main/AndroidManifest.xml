@@ -29,7 +29,8 @@
             android:name=".SetLocationActivity"
             android:label="@string/setlocation" />
         <activity android:name=".PoiListActivity" />
-        <activity android:name=".MapListActivity"></activity>
+        <activity android:name=".MapListActivity" />
+        <activity android:name=".MyPrefsActivity"></activity>
     </application>
 
 </manifest>

@@ -90,6 +90,12 @@ public class HelloMap extends Activity implements View.OnClickListener {
             return true;
 
         }
+        else if(item.getItemId() == R.id.preferences){
+            Intent intent = new Intent(this,MyPrefsActivity.class);
+            startActivityForResult(intent, 4);
+            return true;
+
+        }
 
         return false;
     }
