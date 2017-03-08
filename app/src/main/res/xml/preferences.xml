@@ -3,12 +3,32 @@
     <EditTextPreference android:key="lat"
         android:defaultValue="50.9"
         android:title="Latitude"
-        android:summary="Latitude to show the map at initially." />
+        android:summary="Latitude to show the map at initially."
+        android:id="@+id/latitude"/>
     <EditTextPreference android:key="lon"
         android:defaultValue="-1.4"
         android:title="Longitude"
-        android:summary="Longitude to show the map at initially." />
+        android:summary="Longitude to show the map at initially."
+        android:id="@+id/longitude"/>
     <EditTextPreference android:key="zoom"
+        android:defaultValue="14"
         android:title="Zoom level"
-        android:summary="Define diferent zoom level perpective." />
+        android:summary="Zoom level to show the map at initially."
+        android:id="@+id/zoom"/>
+
+
+    <ListPreference android:key="pizza"
+        android:title="Pizza flavour"
+        android:summary="Choose your pizza flavour."
+
+        android:entries="@array/pizzaFlavours"
+        android:entryValues="@array/pizzaFlavourCodes"
+        />
+    <ListPreference android:key="map"
+        android:title="Map Style"
+        android:summary="Choose your map style."
+        android:entries="@array/mapChoice"
+        android:entryValues="@array/mapCodes"
+        />
+
 </PreferenceScreen>

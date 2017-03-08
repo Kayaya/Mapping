@@ -46,6 +46,23 @@ public class MapListActivity extends ListActivity {
         // handle list item selection
         //still work to do here...
 
+        /*
+        * EXAMPLE AS LAST TIME
+        *
+        * Intent intent = new Intent();
+    Bundle bundle=new Bundle();
+    boolean cyclemap=false;
+    if (v.getId()==R.id.btnCyclemap)
+    {
+        cyclemap=true;
+    }
+    bundle.putBoolean("com.example.cyclemap",cyclemap);
+    intent.putExtras(bundle);
+    setResult(RESULT_OK,intent);
+    finish();
+        *
+        * */
+
 
     }
     //cutomised adaptar

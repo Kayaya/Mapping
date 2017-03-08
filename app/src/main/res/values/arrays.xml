@@ -1,8 +1,8 @@
 <resources>
-    <!--<string-array name="pizzaFlavours">
+    <string-array name="pizzaFlavours">
         <item>Cheese, Tomato and Mushroom</item>
         <item>Ham and Pineapple</item>
-        <item>Hot n'Spicy</item>
+        <item>Hot n Spicy</item>
         <item>Seafood</item>
     </string-array>
     <string-array name="pizzaFlavourCodes">
@@ -10,5 +10,17 @@
         <item>HP</item>
         <item>HS</item>
         <item>SF</item>
-    </string-array>*/ -->
+    </string-array>
+
+    <string-array name="mapChoice">
+        <item>Regular Map</item>
+        <item>Cycle Map</item>
+    </string-array>
+
+    <string-array name="mapCodes">
+        <item>RM</item>
+        <item>CM</item>
+    </string-array>
+
+
 </resources>

@@ -1,7 +1,9 @@
 package com.example.a1kayat34.mapping;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
@@ -44,7 +46,23 @@ public class HelloMap extends Activity implements View.OnClickListener {
         Button go = (Button) findViewById(R.id.go);
         go.setOnClickListener(this);
     }
-   @Override
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        double latitude = Double.parseDouble(prefs.getString("lat", "50.9"));
+        double longitude = Double.parseDouble(prefs.getString("lon", "-1.4"));
+        Integer zoom = Integer.parseInt(prefs.getString("zoom", "14"));
+
+        mv.getController().setZoom(zoom);
+        mv.getController().setCenter(new GeoPoint(latitude,longitude));
+
+    }
+
+    @Override
     public void onClick(View view){
         EditText latitude = (EditText) findViewById(R.id.latitude);
         EditText longitude = (EditText) findViewById(R.id.longitude);
