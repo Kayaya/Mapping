@@ -1,8 +1,10 @@
 package com.example.a1kayat34.mapping;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -18,13 +20,24 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import android.content.Intent;
+import android.widget.Toast;
 
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.Overlay;
+import org.osmdroid.views.overlay.OverlayItem;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class HelloMap extends Activity implements View.OnClickListener {
 
     MapView mv;
+    ItemizedIconOverlay<OverlayItem> items;
+    ItemizedIconOverlay.OnItemGestureListener<OverlayItem> markerGestureListener;
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -34,6 +47,7 @@ public class HelloMap extends Activity implements View.OnClickListener {
 
         // this line tells OpenStreetMap about our app.
         // If you miss this out, you might get banned from OSM servers.
+        // This line sets the user agent, a requirement to download OSM maps
         Configuration.getInstance().load
                 (this, PreferenceManager.getDefaultSharedPreferences(this));
 
@@ -42,6 +56,55 @@ public class HelloMap extends Activity implements View.OnClickListener {
         mv.setBuiltInZoomControls(true);
         mv.getController().setZoom(14);
         mv.getController().setCenter(new GeoPoint(40.1,22.5));
+
+        //set up markers gestures... so that when clicked it makes happen something
+        markerGestureListener = new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+            @Override
+            public boolean onItemSingleTapUp(int index, OverlayItem item) {
+                Toast.makeText(HelloMap.this, item.getSnippet(), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            @Override
+            public boolean onItemLongPress(int index, OverlayItem item) {
+                Toast.makeText(HelloMap.this, item.getSnippet(), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        };
+
+
+
+        //Set overlay items
+        items = new ItemizedIconOverlay<OverlayItem>(this, new ArrayList<OverlayItem>(), markerGestureListener);
+        OverlayItem luanda = new OverlayItem("Luanda", "capical of Angola", new GeoPoint(-8.8271,13.2464));
+        OverlayItem jardimDoEden = new OverlayItem("Jardim do Eden", "Condominio", new GeoPoint(-8.9376,13.2455));
+
+        //adding the item to overlay
+        items.addItem(luanda);
+        items.addItem(jardimDoEden);
+
+        // Load in the CSV file - notes at: http://www.free-map.org.uk/course/mad/part9.php
+        // loop through each result, adding a marker to the map based on the current line
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(Environment.getExternalStorageDirectory().getAbsolutePath()+"/poi.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] components = line.split(",");
+                if (components.length == 5) {
+                    OverlayItem newLocation = new OverlayItem(components[0], components[1], components[2], new GeoPoint(Double.parseDouble(components[4]),Double.parseDouble(components[3])));
+                    items.addItem(newLocation);
+                }
+
+            }
+        }
+        catch (IOException e){
+            new AlertDialog.Builder(this).setPositiveButton("OK", null).setMessage(e.toString()).show();
+        }
+
+        //set overlay to map
+        mv.getOverlays().add(items);
+
 
         Button go = (Button) findViewById(R.id.go);
         go.setOnClickListener(this);
